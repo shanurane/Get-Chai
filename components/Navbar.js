@@ -43,7 +43,7 @@ const Navbar = () => {
               onClick={changedropdown}
               onBlur={changedropdownblur}
             >
-              Welcome{" "}
+              Welcome
               <svg
                 className="w-2.5 h-2.5 ms-3"
                 aria-hidden="true"
