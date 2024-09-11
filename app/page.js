@@ -11,7 +11,7 @@ export default function Home() {
         <div className="flex justify-center text-center items-center">
           <div className="md:text-5xl text-4xl font-bold">Get Me A Chai</div>
           <div className="-mt-5">
-            <img src="/imgs/chai.gif" width={80} alt="..." />
+            <Image src="/imgs/chai.gif" width={80} height={80} alt="..." />
           </div>
         </div>
         <p>
@@ -42,43 +42,22 @@ export default function Home() {
         <div className="font-bold text-xl">Yours Fan Can Buy You a Chai</div>
         <div className="flex px-3 gap-2 justify-around">
           <div className="flex flex-col justify-center items-center text-center">
-            <img src="/imgs/meeting.png" width={60} alt="..." />
+            <Image src="/imgs/meeting.png" width={60} height={60} alt="..." />
             <span className="pt-3 font-bold">Fans wants to help</span>
             <span>Your fans are available to help you</span>
           </div>
           <div className="flex flex-col justify-center items-center text-center">
-            <img src="/imgs/money.gif" width={80} alt="..." />
+            <Image src="/imgs/money.gif" width={80} height={80} alt="..." />
             <span className="font-bold">Fans wants to contribute</span>
             <span>Your fans are willing to contributr financially</span>
           </div>
           <div className="flex flex-col justify-center items-center text-center">
-            <img src="/imgs/friends.png" width={60} alt="..." />
+            <Image src="/imgs/friends.png" width={60} height={80} alt="..." />
             <span className="pt-3 font-bold">Fans wants to collaborate</span>
             <span>Your fans are ready to collaborate with you</span>
           </div>
         </div>
       </div>
-      {/* <div className="bg-white h-1 opacity-10 mt-4"></div> */}
-      {/* <div className="text-white text-center pt-3">
-        <div className="font-bold text-xl">Learn More About Us</div>
-        <div className="flex justify-around">
-          <div className="flex flex-col justify-center items-center text-center">
-            <img src="/imgs/meeting.png" width={60} alt="..." />
-            <span className="pt-3">Fans wants to help</span>
-            <span>Your fans are available to help you</span>
-          </div>
-          <div className="flex flex-col justify-center items-center text-center">
-            <img src="/imgs/money.gif" width={80} alt="..." />
-            <span className="">Fans wants to help</span>
-            <span>Your fans are available to help you</span>
-          </div>
-          <div className="flex flex-col justify-center items-center text-center">
-            <img src="/imgs/friends.png" width={60} alt="..." />
-            <span className="pt-3">Fans wants to help</span>
-            <span>Your fans are available to help you</span>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 }

@@ -111,7 +111,6 @@ const PaymentPage = ({ username }) => {
             width={100}
             height={50}
           />
-          {/* <img className="w-full" src={currentuser.coverpic} alt="" /> */}
           <div className="absolute rounded-full -bottom-14 right-[36%] md:right-[45.6%]">
             <Image
               src={currentuser.profilepic}

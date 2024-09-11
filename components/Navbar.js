@@ -2,6 +2,7 @@
 import { React, useState, useeffect } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -26,7 +27,7 @@ const Navbar = () => {
           className="flex justify-center items-center text-center"
         >
           <div className="mb-2">
-            <img src="/imgs/chai.gif" width={30} alt="..." />
+            <Image src="/imgs/chai.gif" width={30} height={30} alt="..." />
           </div>
           <span className="font-bold text-xl cursor-pointer">Chai</span>
         </Link>
