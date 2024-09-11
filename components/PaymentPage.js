@@ -9,6 +9,7 @@ import { useSearchParams } from "next/navigation";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const PaymentPage = ({ username }) => {
   const [paymentform, setpaymentform] = useState({
@@ -103,13 +104,21 @@ const PaymentPage = ({ username }) => {
       <Script src="https://checkout.razorpay.com/v1/checkout.js" />
       <div className="flex flex-col items-center">
         <div className="w-full relative">
-          <img className="w-full" src={currentuser.coverpic} alt="" />
-
+          <Image
+            src={currentuser.coverpic}
+            alt="get soon..."
+            layout="responsive"
+            width={100}
+            height={50}
+          />
+          {/* <img className="w-full" src={currentuser.coverpic} alt="" /> */}
           <div className="absolute rounded-full -bottom-14 right-[36%] md:right-[45.6%]">
-            <img
-              className="h-28 w-28 rounded-full"
+            <Image
               src={currentuser.profilepic}
-              alt=""
+              className="rounded-full"
+              alt="get soon..."
+              width={112}
+              height={112}
             />
           </div>
         </div>
@@ -132,16 +141,17 @@ const PaymentPage = ({ username }) => {
                 payments.map((p, i) => {
                   return (
                     <li key={i} className="flex gap-2 my-4 items-center">
-                      <img
-                        width={33}
-                        src="imgs/profilepic.png"
-                        alt="avatar"
+                      <Image
                         className="rounded-full"
+                        src="/imgs/profilepic.png"
+                        alt="..."
+                        width={30}
+                        height={30}
                       />
                       <span>
                         {p.name} donated
                         <span className="font-bold"> ₹{p.amount} </span>
-                        with a message "{p.message}"
+                        with a message &quot;{p.message}&quot;
                       </span>
                     </li>
                   );
