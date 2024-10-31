@@ -11,7 +11,7 @@ const Dashboard = () => {
   const router = useRouter();
   const [form, setform] = useState({});
   useEffect(() => {
-    document.title = "Dashboard - Get Me A Chai";
+    document.title = "Dashboard - Get Connect";
     if (!session) {
       router.push("/login");
     } else {
@@ -38,7 +38,7 @@ const Dashboard = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "light",
+      theme: "dark",
       transition: Bounce,
     });
   };
@@ -60,7 +60,7 @@ const Dashboard = () => {
       {/* Same as */}
       <ToastContainer />
       <form
-        className="container mx-auto w-full px-4 xl:w-[40%]"
+        className="container mx-auto w-full px-8 xl:w-[50%] inset-0 backdrop-blur-sm bg-white/5 rounded-xl"
         action={handleSubmit}
       >
         <h1 className="text-center font-bold text-xl p-6">
@@ -78,7 +78,7 @@ const Dashboard = () => {
               type="text"
               name="name"
               id="name"
-              className="bg-zinc-600 border border-white w-full rounded-lg p-[4px]"
+              className="bg-transparent border border-white w-full rounded-lg p-[4px]"
             ></input>
           </div>
           {/* input for email */}
@@ -92,7 +92,7 @@ const Dashboard = () => {
               type="email"
               name="email"
               id="email"
-              className="bg-zinc-600 border border-white w-full rounded-lg p-[4px]"
+              className="bg-transparent border border-white w-full rounded-lg p-[4px]"
             ></input>
           </div>
           {/* input for username */}
@@ -106,7 +106,7 @@ const Dashboard = () => {
               type="text"
               name="username"
               id="username"
-              className="bg-zinc-600 border border-white w-full rounded-lg p-[4px]"
+              className="bg-transparent border border-white w-full rounded-lg p-[4px]"
             ></input>
           </div>
           {/* input for profile picture */}
@@ -120,7 +120,7 @@ const Dashboard = () => {
               type="img"
               name="profilepic"
               id="profilepic"
-              className="bg-zinc-600 border border-white w-full rounded-lg p-[4px]"
+              className="bg-transparent border border-white w-full rounded-lg p-[4px]"
             ></input>
           </div>
           {/* input for cover picture */}
@@ -134,7 +134,7 @@ const Dashboard = () => {
               type="img"
               name="coverpic"
               id="coverpic"
-              className="bg-zinc-600 border border-white w-full rounded-lg p-[4px]"
+              className="bg-transparent border border-white w-full rounded-lg p-[4px]"
             ></input>{" "}
           </div>
           {/* input for razorpay id */}
@@ -148,7 +148,7 @@ const Dashboard = () => {
               type="text"
               name="razorpayid"
               id="razorpayid"
-              className="bg-zinc-600 border border-white w-full rounded-lg p-[4px]"
+              className="bg-transparent border border-white w-full rounded-lg p-[4px]"
             ></input>
           </div>
           {/* input for razorpay secret */}
@@ -162,15 +162,17 @@ const Dashboard = () => {
               type="text"
               name="razorpaysecret"
               id="razorpaysecret"
-              className="bg-zinc-600 border border-white w-full rounded-lg p-[4px]"
+              className="bg-transparent border border-white w-full rounded-lg p-[4px]"
             ></input>
           </div>
-          <div>
+          <div className="pt-4">
             <button
               type="submit"
-              className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2"
+              className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800"
             >
-              Save
+              <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                Save
+              </span>
             </button>
           </div>
         </div>

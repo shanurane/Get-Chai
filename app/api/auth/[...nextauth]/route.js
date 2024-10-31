@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
+import CredentialsProvider from "next-auth/providers/credentials";
 // import GoogleProvider from "next-auth/providers/google";
 // import AppleProvider from "next-auth/providers/apple";
 // import FacebookProvider from "next-auth/providers/facebook";
@@ -8,10 +9,52 @@ import mongoose from "mongoose";
 import User from "@/models/User";
 import Payment from "@/models/Payment";
 import connectDb from "@/db/connectDb";
+import bcrypt from "bcryptjs"; // Make sure to import bcrypt for password hashing
 
 export const authOptions = NextAuth({
   // Configure one or more authentication providers
+  // pages: {
+  //   signIn: "/login",
+  // },
   providers: [
+    // credential configuration
+    CredentialsProvider({
+      name: "credentials",
+      credentials: {
+        // username: { label: "Username", type: "text" },
+        // password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        // Connect to the database
+        await connectDb();
+
+        // Find the user in the database
+        const user = await User.findOne({ username: credentials.username });
+        if (!user) {
+          // User not found
+          console.log("User not found");
+          return null;
+        }
+
+        // Compare the provided password with the hashed password
+        const isValid = await bcrypt.compare(
+          credentials.password,
+          user.password
+        );
+        if (!isValid) {
+          // If the password does not match, return null
+          console.log("Invalid password");
+          return null;
+        }
+
+        // If authentication is successful, return the user object
+        return {
+          id: user._id,
+          name: user.username,
+          email: user.email,
+        };
+      },
+    }),
     GitHubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
@@ -33,6 +76,7 @@ export const authOptions = NextAuth({
         }
         return true;
       }
+      return true;
     },
     async session({ session, user, token }) {
       await connectDb();

@@ -36,7 +36,7 @@ const PaymentPage = ({ username }) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "light",
+        theme: "dark",
         transition: Bounce,
       });
     }
@@ -64,7 +64,7 @@ const PaymentPage = ({ username }) => {
       key: currentuser.razorpayid, // Enter the Key ID generated from the Dashboard
       amount: amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       currency: "INR",
-      name: "Get A Chai", //your business name
+      name: "Linkster", //your business name
       description: "Test Transaction",
       image: "https://example.com/your_logo",
       order_id: orderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
@@ -102,29 +102,24 @@ const PaymentPage = ({ username }) => {
       {/* Same as */}
       <ToastContainer />
       <Script src="https://checkout.razorpay.com/v1/checkout.js" />
-      <div className="flex flex-col items-center">
-        <div className="w-full relative">
-          <Image
-            src={currentuser.coverpic}
-            alt="get soon..."
-            layout="responsive"
-            width={100}
-            height={50}
-          />
-          <div className="absolute rounded-full -bottom-14 right-[36%] md:right-[45.6%]">
+      <div className="flex flex-col w-full gap-1 justify-center items-center text-center mt-16">
+        <div className="flex flex-col items-center">
+          <div className="rounded-full h-36">
             <Image
-              src={currentuser.profilepic}
-              className="rounded-full"
+              src={
+                currentuser.profilepic
+                  ? currentuser.profilepic
+                  : "/icons/person.png"
+              }
+              className="rounded-full min-h-full"
               alt="get soon..."
-              width={112}
-              height={112}
+              width={145}
+              height={140}
             />
           </div>
-        </div>
-        <div className="flex flex-col gap-1 justify-center text-center mt-16">
           <h1 className="font-bold text-xl">@{username}</h1>
           <span className="text-sm text-zinc-500">
-            Lets help {currentuser.name} get a chai!
+            Lets help {currentuser.name} connect
           </span>
           <span className="text-sm text-zinc-400">
             {payments.length} payments . ₹
@@ -135,11 +130,11 @@ const PaymentPage = ({ username }) => {
         <div className="payments w-[90%] md:w-[80%] flex flex-col md:flex-row md:gap-3 justify-center gap-2 py-2">
           <div className="supporters w-full md:w-1/2 bg-zinc-700 p-4 rounded-lg">
             <h1 className="font-bold">Supporters</h1>
-            <div className="ml-3 flex flex-col">
+            <div className="pl-3 flex flex-col">
               {payments && payments.length > 0 ? (
                 payments.map((p, i) => {
                   return (
-                    <li key={i} className="flex gap-2 my-4 items-center">
+                    <li key={i} className="flex gap-2 py-4 items-center">
                       <Image
                         className="rounded-full"
                         src="/imgs/profilepic.png"
@@ -199,7 +194,8 @@ const PaymentPage = ({ username }) => {
                   className="text-white disabled:bg-purple-400 disabled:hover:cursor-not-allowed disabled:from-purple-500 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2"
                   disabled={
                     paymentform.name?.length < 3 ||
-                    paymentform.amount?.length < 1
+                    paymentform.amount?.length < 1 ||
+                    paymentform.message?.length < 3
                   }
                 >
                   Pay
