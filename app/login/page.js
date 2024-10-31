@@ -147,7 +147,7 @@ const Login = () => {
             </form>
             <div>
               <span>
-                Don't have an account |
+                Don&apos;t have an account |
                 <span
                   onClick={handleRegister}
                   className="text-blue-600 cursor-pointer"
