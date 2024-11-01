@@ -46,6 +46,7 @@ const Menu = (params) => {
                   src="/icons/logo.png"
                   width={40}
                   height={40}
+                  alt=".."
                   className="h-full w-full"
                 />
               </div>

@@ -44,6 +44,7 @@ const Navbar = () => {
                 src="/icons/logo.png"
                 width={40}
                 height={40}
+                alt=""
                 className=""
               />
             </div>
@@ -64,7 +65,7 @@ const Navbar = () => {
               <Image
                 src={form.profilepic ? form.profilepic : "/icons/person.png"}
                 className="rounded-full min-h-full"
-                alt="get soon..."
+                alt=""
                 width={40}
                 height={100}
               />

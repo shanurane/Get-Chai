@@ -22,19 +22,20 @@ const Login = () => {
   }, [router, session]);
 
   const handleRegister = () => {
-    setError("");
+    setError(null);
     setReg(!reg);
   };
 
-  const handleSignIn = async (e) => {
+  async function handleSignIn(e) {
     e.preventDefault();
+    setError(null);
     if (!username || !password) {
-      setError("Please fill the credentials");
+      setError("Please fill the credentials.");
       return;
     }
 
+    setpending(true);
     try {
-      setpending(true);
       const res = await signIn("credentials", {
         username: username,
         password: password,
@@ -42,25 +43,26 @@ const Login = () => {
       });
       if (res.error) {
         setError("Invalid Credentials");
-        setpending(false);
-        return;
+      } else {
+        router.replace(`/${username}`);
       }
-      router.replace("/");
     } catch (error) {
-      setpending(false);
       setError("Something went wrong");
+    } finally {
+      setpending(false);
     }
-  };
+  }
 
   async function handleReg(e) {
-    console.log("chala");
     e.preventDefault();
+    setError(null);
     if (!username || !password || !email) {
       setError("Must provide all credentials.");
+      return;
     }
 
+    setpending(true);
     try {
-      setpending(true);
       const res = await fetch("/api/register", {
         method: "POST",
         headers: {
@@ -69,21 +71,18 @@ const Login = () => {
         body: JSON.stringify({ username, password, email }),
       });
       if (res.ok) {
-        setpending(false);
         const form = e.target;
         form.reset();
         setReg(!reg);
         router.push("/login");
-        console.log("user registered");
       } else {
         const errorData = await res.json();
         setError(errorData.message);
-        console.log("Something went wrong.");
-        setpending(false);
       }
     } catch (error) {
-      setpending(false);
       setError("Something went wrong.");
+    } finally {
+      setpending(false);
     }
   }
 
@@ -111,7 +110,6 @@ const Login = () => {
                     name="username"
                     onChange={(e) => {
                       setUsername(e.target.value);
-                      setError(null);
                     }}
                     className="bg-transparent border border-white w-full rounded-lg p-[4px]"
                   ></input>
@@ -128,12 +126,16 @@ const Login = () => {
                     name="password"
                     onChange={(e) => {
                       setPassword(e.target.value);
-                      setError(null);
                     }}
                     className="bg-transparent border border-white w-full rounded-lg p-[4px]"
                   ></input>
                 </div>
               </div>
+              {error && (
+                <div>
+                  <span className="text-red-700">{error}</span>
+                </div>
+              )}
               <div className="pt-4 mt-2">
                 <button
                   type="submit"
@@ -167,19 +169,17 @@ const Login = () => {
             <form onSubmit={handleReg}>
               <div className="">
                 <div>
-                  <label htmlFor="username" className="pl-2 mt-4">
+                  <label htmlFor="rusername" className="pl-2 mt-4">
                     Username
                   </label>
                   <input
                     type="text"
                     placeholder="Username"
                     value={username}
-                    id="username"
-                    name="username"
+                    id="rusername"
+                    name="rusername"
                     onChange={(e) => {
                       setUsername(e.target.value);
-                      console.log(username);
-                      setError(null);
                     }}
                     className="bg-transparent border border-white w-full rounded-lg p-[4px]"
                   ></input>
@@ -196,32 +196,32 @@ const Login = () => {
                     name="email"
                     onChange={(e) => {
                       setEmail(e.target.value);
-                      console.log(email);
-                      setError(null);
                     }}
                     className="bg-transparent border border-white w-full rounded-lg p-[4px]"
                   ></input>
                 </div>
                 <div className="mt-4">
-                  <label htmlFor="password" className="pl-2 pt-4">
+                  <label htmlFor="rpassword" className="pl-2 pt-4">
                     Password
                   </label>
                   <input
-                    type="passsword"
+                    type="password"
                     placeholder="Password"
                     value={password}
-                    id="password"
-                    name="password"
+                    id="rpassword"
+                    name="rpassword"
                     onChange={(e) => {
                       setPassword(e.target.value);
-                      console.log(password);
-                      setError(null);
                     }}
                     className="bg-transparent border border-white w-full rounded-lg p-[4px]"
                   ></input>
                 </div>
               </div>
-              {error && <span className="text-red-700">{error}</span>}
+              {error && (
+                <div>
+                  <span className="text-red-700">{error}</span>
+                </div>
+              )}
               <div className="pt-4 mt-2">
                 <button
                   type="submit"

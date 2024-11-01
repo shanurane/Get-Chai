@@ -8,6 +8,7 @@ const About = () => {
       <div className="border-[1.5px] w-24 h-[94px] overflow-hidden bg-white border-sky-700 p-[3.2px] py-[6px] rounded-full invert">
         <Image
           src="/icons/logo.png"
+          alt=""
           width={100}
           height={100}
           className="h-full w-full"
@@ -17,9 +18,9 @@ const About = () => {
         <h1 className="text-4xl font-bold mb-4">About Linkster</h1>
         <p className="text-lg text-zinc-300 mb-6">
           Linkster is a social media platform designed to help you connect with
-          friends, share posts, and discover new communities. Whether you&apos;re
-          looking to stay updated with the latest news, chat with friends, or
-          find new interest groups, Linkster makes it easy and fun.
+          friends, share posts, and discover new communities. Whether
+          you&apos;re looking to stay updated with the latest news, chat with
+          friends, or find new interest groups, Linkster makes it easy and fun.
         </p>
         <h2 className="text-2xl font-semibold mb-2">Features</h2>
         <ul className="list-disc list-inside text-left text-zinc-300 mb-6">

@@ -33,7 +33,10 @@ export const authOptions = NextAuth({
         if (!user) {
           // User not found
           console.log("User not found");
-          return null;
+          return NextResponse.json(
+            { message: "Invalid Credentials" },
+            { status: 500 }
+          );
         }
 
         // Compare the provided password with the hashed password
@@ -44,7 +47,10 @@ export const authOptions = NextAuth({
         if (!isValid) {
           // If the password does not match, return null
           console.log("Invalid password");
-          return null;
+          return NextResponse.json(
+            { message: "Invalid Password" },
+            { status: 500 }
+          );
         }
 
         // If authentication is successful, return the user object

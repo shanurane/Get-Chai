@@ -36,31 +36,46 @@ const PostsPage = ({ username }) => {
   return (
     <>
       <div className="flex flex-col w-full md:w-[80%] gap-2 justify-center items-center text-center md:mt-16">
-        <div className="md:pl-10 flex flex-col">
+        <div className="md:pl-10 flex flex-col w-full">
           {posts && posts.length > 0 ? (
             posts.map((p, i) => {
               return (
                 <li
                   key={p._id}
-                  className="flex gap-2 my-4 items-center justify-center"
+                  className="flex gap-2 my-4 items-center justify-center w-full"
                 >
-                  <div className="post flex">
-                    <div className="w-auto rounded-full m-2 mr-3 mt-5 md:m-4">
-                      <img
+                  <div className="post flex w-full md:w-auto">
+                    <div className="hidden md:block w-full rounded-full m-2 md:mr-3 mt-5 md:m-4">
+                      <Image
                         src={
                           currentuser.profilepic
                             ? currentuser.profilepic
                             : "/icons/person.png"
                         }
+                        width={100}
+                        height={100}
                         alt="..."
-                        className="rounded-full w-10 md:w-14"
+                        className="rounded-full w-10 h-10 md:w-14 md:h-14"
                       />
                     </div>
                     <div className="flex-col w-full">
                       <div className="flex w-full">
                         <div className="flex-col w-full items-start justify-start">
-                          <div className="mt-3 name flex w-full">
-                            <div className="flex justify-start items-start md:flex-col w-full">
+                          <div className="mt-3 name flex w-full items-center">
+                            <div className="w-auto md:hidden rounded-full mr-2">
+                              <Image
+                                src={
+                                  currentuser.profilepic
+                                    ? currentuser.profilepic
+                                    : "/icons/person.png"
+                                }
+                                width={100}
+                                height={100}
+                                alt="..."
+                                className="rounded-full w-11 h-10"
+                              />
+                            </div>
+                            <div className="flex flex-col justify-start items-start w-full">
                               <div>
                                 <span className="font-bold text-base w-auto">
                                   {username}
@@ -85,12 +100,14 @@ const PostsPage = ({ username }) => {
                           <div className="message font-semibold text-base">
                             <span>{p.message}</span>
                           </div>
-                          <div className="postimg inset-0 bg-white/10 rounded-xl px-2 mr-4">
-                            <div className="md:p-4 md:pl-0">
-                              <img
+                          <div className="postimg flex flex-col justify-center inset-0 bg-white/10 rounded-xl px-2 md:mr-4">
+                            <div className="md:p-4">
+                              <Image
                                 src={p.postpic}
                                 alt="Image Loading Error..."
                                 className="rounded-2xl w-full"
+                                width={100}
+                                height={100}
                               />
                             </div>
                             <div className="w-full flex justify-between my-1 md:mx-1 md:mr-4 md:gap-3 text-gray-500 cursor-pointer">

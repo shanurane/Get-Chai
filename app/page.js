@@ -15,6 +15,7 @@ export default function Home() {
                 src="/icons/logo.png"
                 width={40}
                 height={40}
+                alt=""
                 className=""
               />
             </div>
