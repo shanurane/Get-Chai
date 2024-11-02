@@ -9,7 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
-  const [reg, setReg] = useState("true");
+  const [reg, setReg] = useState(true);
   const [pending, setpending] = useState(false);
 
   const router = useRouter();
